@@ -22,7 +22,36 @@
     <label for="timeInput">Time:</label>
     <input type="time" id="timeInput">
     <label for="dayInput">Day:</label>
-    <input type="number" id="dayInput" min="-2" max="3" placeholder="Enter day (-2 to 3)">
+    <input type="date" id="dayInput" min="" max="">
+    <script>
+        // Function to format date to YYYY-MM-DD for input value
+        function formatDateForInput(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${year}-${month}-${day}`;
+        }
+
+        // Event listener to format the date input to YYYY-MM-DD for input value
+        document.getElementById('dayInput').addEventListener('change', function() {
+            const inputDate = new Date(this.value);
+            this.value = formatDateForInput(inputDate);
+        });
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() - 2);
+        const maxDate = new Date(today);
+        maxDate.setDate(today.getDate() + 3);
+
+        document.getElementById('dayInput').min = minDate.toISOString().split('T')[0];
+        document.getElementById('dayInput').max = maxDate.toISOString().split('T')[0];
+
+        // Event listener to format the date input to DD/MM/YYYY
+        document.getElementById('dayInput').addEventListener('change', function() {
+            const inputDate = new Date(this.value);
+            this.value = formatDate(inputDate);
+        });
+    </script>
     <button id="checkTempButton">Check Temperature</button>
 </section>
 <section id="resultsContent">

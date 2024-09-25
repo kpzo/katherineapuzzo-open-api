@@ -16,15 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
   .then(data => {
-    // Convert temperatures from Celsius to Fahrenheit
-
     checkTempButton.addEventListener('click', () => {
       const inputTime = timeInput.value;
       const inputDay = dayInput.value;
-
-      // Clear the previous list
-      resultsContent.innerHTML = '';
-      resultsText.innerHTML = '';
 
       // Filter and display data according to the API documentation
       const filteredTemperatures = data.hourly.time
@@ -32,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .filter(entry => {
           const entryDate = new Date(entry.time);
           const inputDate = new Date(inputDay);
-            inputDate.setHours(parseInt(inputTime.split(':')[0]));
-            inputDate.setMinutes(parseInt(inputTime.split(':')[1]));
-          return entryDate.getHours() === parseInt(inputTime.split(':')[0]) &&
-                 entryDate.getMinutes() === parseInt(inputTime.split(':')[1]) &&
+          inputDate.setHours(parseInt(inputTime.split(':')[0]));
+          inputDate.setMinutes(parseInt(inputTime.split(':')[1]));
+          return entryDate.getHours() === inputDate.getHours() &&
+                 entryDate.getMinutes() === inputDate.getMinutes() &&
                  entryDate.toDateString() === inputDate.toDateString();
         });
 
