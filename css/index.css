@@ -1,0 +1,56 @@
+body {
+    font-family: 'Edu VIC WA NT Beginner', sans-serif;
+    background-color: #f0f0f0;
+    color: #000; /* Changed to black */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #000; /* Changed to black */
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#resultsTemp, #resultsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#resultsTemp, #resultsText {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#resultsTemp div, #resultsContent div {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #000; /* Changed to black */
+}
+
+input, button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    color: #000; /* Changed to black */
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
