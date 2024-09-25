@@ -13,6 +13,7 @@ h1 {
 
 section {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #resultsTemp, #resultsContent {
@@ -44,7 +45,7 @@ input, button {
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #ee5698;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -52,5 +53,5 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #65b300;
 }
