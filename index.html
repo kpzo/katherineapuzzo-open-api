@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
+    
 <head>
     <title>Weather</title>
     <meta charset="utf-8">
@@ -10,8 +12,10 @@
     <!-- Include Luxon from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
 </head>
+
 <body>
 <h1>Weather</h1>
+
 <section id="cityList">
     <h2>Locations</h2>
     <select id="citySelector">
@@ -19,6 +23,7 @@
         <option value="35.1234,-79.1234">Carrboro, NC, USA</option>
     </select>
 </section>
+
 <section id="input">
     <h2>Input</h2>
     <label for="timeInput">Date and Time:</label>
@@ -26,73 +31,14 @@
     <input type="datetime-local" id="timeInput">
     <button id="checkTempButton">Check Temperature</button>
 </section>
+
 <section id="results">
     <h2>Results</h2>
     <div id="resultsContent"></div>
     <div id="resultsText"></div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const timeInput = document.getElementById('timeInput');  // Use datetime-local input
-        const checkTempButton = document.getElementById('checkTempButton');
-        const resultsContent = document.getElementById('resultsContent');
-        const resultsText = document.getElementById('resultsText');
-
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=49.6992&longitude=-123.1563&hourly=temperature_2m&timezone=America%2FNew_York&past_days=2&forecast_days=3', {
-            mode: 'cors'
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Failed to fetch weather data');
-            }
-        })
-        .then(data => {
-            checkTempButton.addEventListener('click', () => {
-                const inputDateTime = timeInput.value;  // Get the value from datetime-local input
-                
-                // Convert input datetime to America/New_York using Luxon
-                const userDateTime = luxon.DateTime.fromISO(inputDateTime);  // User's local time
-                const nyDateTime = userDateTime.setZone('America/New_York');  // Convert to New York timezone
-                
-                resultsContent.innerHTML = '';  // Clear previous results
-
-                if (!nyDateTime.isValid) {  // Validate input date and time
-                    resultsText.textContent = 'Please enter a valid date and time.';
-                    return;
-                }
-
-                // Filter and display data
-                const filteredTemperatures = data.hourly.time
-                    .map((time, index) => {
-                        const apiDate = luxon.DateTime.fromISO(time, { zone: 'America/New_York' });  // API date in New York timezone
-                        return { apiDate, temperature: data.hourly.temperature_2m[index] };
-                    })
-                    .filter(entry => {
-                        // Compare dates and hours in the same New York timezone
-                        return entry.apiDate.toISO() === nyDateTime.toISO();  // Compare using ISO string
-                    });
-
-                if (filteredTemperatures.length > 0) {
-                    filteredTemperatures.forEach(entry => {
-                        const tempDiv = document.createElement('div');
-                        tempDiv.textContent = `Time: ${entry.apiDate.toISO()}, Temperature: ${entry.temperature.toFixed(1)}°F`;  // Format temperature
-                        resultsContent.appendChild(tempDiv);
-                    });
-                    resultsText.textContent = 'Temperatures fetched successfully!';
-                } else {
-                    resultsText.textContent = 'No temperatures found for the given time and day.';
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            resultsText.textContent = 'Error fetching data. Please try again later.';
-        });
-    });
-</script>
 <script src="js/index.js"></script>
+
 </body>
 </html>
