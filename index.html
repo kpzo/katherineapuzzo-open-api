@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    
+
 <head>
-    <title>Weather</title>
+    <title>Weather Trends</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Weather">
@@ -14,10 +14,11 @@
 </head>
 
 <body>
-<h1>Weather</h1>
+<h1>Weather Data</h1>
 
 <section id="cityList">
     <h2>Locations</h2>
+    <p>Choose between my current home (NC) and favorite place (BC):</p>
     <select id="citySelector">
         <option value="49.6992,-123.1563">Squamish, BC, Canada</option>
         <option value="35.1234,-79.1234">Carrboro, NC, USA</option>
@@ -26,7 +27,9 @@
 
 <section id="input">
     <h2>Input</h2>
-    <label for="timeInput">Date and Time:</label>
+    <p>Enter a date within the limits of two days before and three days after today to see weather trends! <br>
+    Choose any time of day. </p>
+    <label for="timeInput">Date & Time:</label>
     <!-- Use datetime-local for both date and time -->
     <input type="datetime-local" id="timeInput">
     <button id="checkTempButton">Check Temperature</button>
@@ -36,6 +39,20 @@
     <h2>Results</h2>
     <div id="resultsContent"></div>
     <div id="resultsText"></div>
+</section>
+
+<section id="temperatureConverter">
+<h2>Temperature Converter</h2>
+
+<!-- Input field for Celsius -->
+<label for="celsiusInput">Enter temperature in Celsius:</label>
+<input type="number" id="celsiusInput" placeholder="Celsius">
+
+<!-- Button to trigger conversion -->
+<button id="convertButton">Convert to Fahrenheit</button>
+
+<!-- Display result -->
+<p id="result"></p>
 </section>
 
 <script src="js/index.js"></script>

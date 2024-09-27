@@ -1,29 +1,82 @@
 body {
     font-family: 'Edu VIC WA NT Beginner', sans-serif;
-    background-color: #f0f0f0;
-    color: #000; /* Changed to black */
+    background-color: #81ef32;
+    color: #000; 
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #000; /* Changed to black */
+    color: #000; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000000;
+    margin-bottom: 20px;
+    max-width: none;
+    align-items: center;
 }
 
 section {
     margin-bottom: 20px;
     text-align: center;
+    
+}
+#cityList {
+    text-align: center;
+    color: #000; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000000;
+    margin-bottom: 20px;
+    max-width: none;
+    align-items: center;
+}
+#citySelctor {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+}
+
+#results {
+    text-align: center;
+    color: #000; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000000;
+    margin-bottom: 20px;
+    max-width: none;
+    align-items: center;
 }
 
 #resultsTemp, #resultsContent {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 #resultsTemp, #resultsText {
-    margin: 0 auto;
+    margin: 2 auto;
     max-width: 600px;
 }
 
@@ -33,7 +86,7 @@ section {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #000; /* Changed to black */
+    color: #000; 
 }
 
 input, button {
@@ -41,11 +94,11 @@ input, button {
     margin: 10px auto;
     padding: 10px;
     font-size: 16px;
-    color: #000; /* Changed to black */
+    color: #000; 
 }
 
 button {
-    background-color: #ee5698;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -54,4 +107,37 @@ button {
 
 button:hover {
     background-color: #65b300;
+}
+
+#input {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000000;
+}
+input, p {
+    font-size: 16px;
+    color: #000; 
+}
+
+#temperatureConverter {
+    text-align: center;
+    color: #000; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000000;
+    margin-bottom: 20px;
+    max-width: none;
+    align-items: center;
 }
